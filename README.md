@@ -1,2 +1,2 @@
 # PortalGame
-Game Dev project for CS47000
+Game Dev project for CS4700
