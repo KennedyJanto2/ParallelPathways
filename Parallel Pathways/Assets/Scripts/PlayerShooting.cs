@@ -10,15 +10,24 @@ public class PlayerShooting : MonoBehaviour
     private GameObject currentPortalA;
     private GameObject currentPortalB;
 
+    private Animator anim;
+
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     void Update()
     {
         if (Input.GetButtonDown("Fire1")) // Assumes "Fire1" is mapped to the left mouse button or equivalent
         {
             ShootPortal(ref currentPortalA, portalAPrefab, currentPortalB);
+            anim.SetTrigger("attack");
         }
         else if (Input.GetButtonDown("Fire2")) // Assumes "Fire2" is mapped to the right mouse button or equivalent
         {
             ShootPortal(ref currentPortalB, portalBPrefab, currentPortalA);
+            anim.SetTrigger("attack");
         }
     }
 
