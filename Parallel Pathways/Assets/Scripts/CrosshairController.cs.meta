@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7b869cb8805d3ba4f81ec0dfc11663e4
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - mainCamera: {instanceID: 0}
+  - availableSprite: {fileID: 21300000, guid: f6671903cfc60d648b38f018a14cba1c, type: 3}
+  - notAvailableSprite: {fileID: 21300000, guid: 668a6580eb0943346a37cfaed86cd1b1,
+      type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

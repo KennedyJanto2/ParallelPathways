@@ -21,12 +21,12 @@ public class PlayerShooting : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire1")) // Assumes "Fire1" is mapped to the left mouse button or equivalent
+        if (Input.GetMouseButtonDown(0)) // Assumes "Fire1" is mapped to the left mouse button or equivalent
         {
             ShootPortal(ref currentPortalA, portalAPrefab, currentPortalB);
             anim.SetTrigger("attack");
         }
-        else if (Input.GetButtonDown("Fire2")) // Assumes "Fire2" is mapped to the right mouse button or equivalent
+        else if (Input.GetMouseButtonDown(1)) // Assumes "Fire2" is mapped to the right mouse button or equivalent
         {
             ShootPortal(ref currentPortalB, portalBPrefab, currentPortalA);
             anim.SetTrigger("attack");
@@ -40,14 +40,14 @@ public class PlayerShooting : MonoBehaviour
         mousePosInScreen.z = Mathf.Abs(Camera.main.transform.position.z);
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mousePosInScreen);
 
-        // Perform a Raycast to check for tilemap surfaces
+        // Perform a Raycast to check for objects with the "Platform" tag
         RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
         if (hit.collider != null)
         {
-            // Check if the hit object is part of the tilemap
-            if (hit.collider.GetComponent<TilemapRenderer>() != null)
+            // Check if the hit object has the "Platform" tag
+            if (hit.collider.CompareTag("Platform"))
             {
-                // The raycast hit a tilemap, prevent portal creation
+                // The raycast hit an object with the "Platform" tag, prevent portal creation
                 return;
             }
         }
