@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+
 
 public class PlayerShooting : MonoBehaviour
 {
@@ -33,19 +35,28 @@ public class PlayerShooting : MonoBehaviour
 
     void ShootPortal(ref GameObject currentPortal, GameObject portalPrefab, GameObject otherPortal)
     {
-        // Destroy the existing portal if there is one
+        // Calculate the world position of the cursor
+        Vector3 mousePosInScreen = Input.mousePosition;
+        mousePosInScreen.z = Mathf.Abs(Camera.main.transform.position.z);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(mousePosInScreen);
+
+        // Perform a Raycast to check for tilemap surfaces
+        RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+        if (hit.collider != null)
+        {
+            // Check if the hit object is part of the tilemap
+            if (hit.collider.GetComponent<TilemapRenderer>() != null)
+            {
+                // The raycast hit a tilemap, prevent portal creation
+                return;
+            }
+        }
+        
+        // If no tilemap is hit, destroy the existing portal and instantiate a new one at the mouse position
         if (currentPortal != null)
         {
             Destroy(currentPortal);
         }
-
-        // Calculate the world position of the cursor
-        Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        // Ensure that the z-coordinate of the mousePosition is set correctly (usually to 0 in 2D games)
-        mousePosition = new Vector2(mousePosition.x, mousePosition.y);
-
-        // Instantiate a new portal at the cursor's position
         currentPortal = Instantiate(portalPrefab, mousePosition, Quaternion.identity);
 
         // Update the exit portal for both the new and existing portal
@@ -61,4 +72,5 @@ public class PlayerShooting : MonoBehaviour
             }
         }
     }
+
 }
