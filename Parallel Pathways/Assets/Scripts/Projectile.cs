@@ -6,8 +6,8 @@ public class Projectile : MonoBehaviour
 {
     private float startingx;
     private float startingy;
-    public float boundary = 109;
-    public float speed = 4.5f;
+    public float boundary;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
