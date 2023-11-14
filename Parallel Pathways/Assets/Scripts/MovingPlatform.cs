@@ -8,10 +8,12 @@ public class MovingPlatform : MonoBehaviour
     public Transform[] points;
     public float speed;
     private int i;
+    private Vector3 originalScale;
     // Start is called before the first frame update
     void Start()
     {
         transform.position = points[start].position;
+        originalScale = new Vector3(1,1,1);
     }
 
     // Update is called once per frame
@@ -33,7 +35,18 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            collision.transform.SetParent(transform);
+            if(transform.localScale.x > 1)
+            {
+                collision.transform.parent = transform.GetChild(0);
+                collision.transform.localScale = originalScale;
+            }
+            else
+            {
+                collision.transform.parent = transform;
+            }
+            
+            
+
         }
     }
 
