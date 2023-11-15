@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Projectile : MonoBehaviour
+public class VerticalProjectile : MonoBehaviour
 {
     private float startingx;
     private float startingy;
-    public float boundary;
+    public float yboundary;
     public float speed;
     // Start is called before the first frame update
     void Start()
@@ -18,11 +18,11 @@ public class Projectile : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.position.x > boundary)
+        if (transform.position.y < yboundary)
         {
-            transform.position = new Vector3(startingx,startingy,0);
+            transform.position = new Vector3(startingx, startingy, 0);
         }
-        transform.position += transform.right * Time.deltaTime * speed;
+        transform.position -= transform.up * Time.deltaTime * speed;
     }
 
     private void OnTriggerEnter2D(Collider2D collider)

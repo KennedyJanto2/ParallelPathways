@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaserDie : MonoBehaviour
 {
-
+    public int x, y;
 
     // Start is called before the first frame update
     void Start()
@@ -22,7 +22,7 @@ public class LaserDie : MonoBehaviour
     {
         if(collider.gameObject.tag == "Player")
         {
-            collider.gameObject.transform.position = new Vector3(0, 1, 0);
+            collider.gameObject.transform.position = new Vector3(x, y, 0);
         }
         
     }
