@@ -25,12 +25,15 @@ public class Projectile : MonoBehaviour
         transform.position += transform.right * Time.deltaTime * speed;
     }
 
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.gameObject.tag == "Player")
+    
+        if(collider.gameObject.tag == "Player")
         {
-            collider.gameObject.transform.position = new Vector3(0, 1, 0);
+            GameObject.Find("Player").GetComponent<Die>().respawn();
         }
-
+        
     }
+
 }
