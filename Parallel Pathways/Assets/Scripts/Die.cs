@@ -12,7 +12,7 @@ public class Die : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if(transform.position.y < boundary)
         {
@@ -25,7 +25,7 @@ public class Die : MonoBehaviour
     {
         string col = collider.gameObject.tag;
     
-        if(col == "Laser")
+        if(col == "Projectile" || col == "Laser")
         {
             respawn();
         }

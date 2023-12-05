@@ -49,6 +49,19 @@ public class Projectiles : MonoBehaviour
                 yield return new WaitForSeconds(.35F);
             }
         }
+        else if(typePattern == "BouncyRandom") 
+        {
+            for(int i = 0; i < NumbOfProjectiles; i++)
+            {
+                float rand = Random.Range(-5,5);
+                float rand2 = Random.Range(-5,5);
+                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x + rand, originalProjectile.transform.position.y + rand2, 0), originalProjectile.transform.rotation);
+                Rigidbody2D rb = projectileClone.GetComponent<Rigidbody2D>();
+                rb.velocity = new Vector3(15,15,0);
+                yield return new WaitForSeconds(.35F);
+
+            }
+        }
     }
 
   
