@@ -20,7 +20,7 @@ public class VerticalProjectile : MonoBehaviour
     {
         if (transform.position.y < yboundary)
         {
-            transform.position = new Vector3(startingx, startingy, 0);
+            transform.position = new Vector3(startingx, startingy, -6);
         }
         transform.position -= transform.up * Time.deltaTime * speed;
     }

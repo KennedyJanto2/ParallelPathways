@@ -35,16 +35,16 @@ public class MovingPlatform : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            if(transform.localScale.x > 1)
+            if(transform.localScale.x != 1)
             {
                 collision.transform.parent = transform.GetChild(0);
-                collision.transform.localScale = originalScale;
             }
             else
             {
                 collision.transform.parent = transform;
+
             }
-            
+            collision.transform.localScale = originalScale;
             
 
         }

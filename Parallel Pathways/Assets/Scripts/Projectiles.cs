@@ -13,7 +13,7 @@ public class Projectiles : MonoBehaviour
     void Start()
     {
         //GameObject projectileClone = Instantiate(originalProjectile); //create one clone of projectile
-        originalProjectile.transform.position = new Vector3(xpos,ypos,0);
+        originalProjectile.transform.position = new Vector3(xpos,ypos,-6);
         StartCoroutine(CreateProjectiles(numbOfProjectiles, pattern));
     }
 
@@ -29,7 +29,7 @@ public class Projectiles : MonoBehaviour
         {
             for (int i = 0; i < NumbOfProjectiles; i++)
             {
-                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x, originalProjectile.transform.position.y + i + i, 0), originalProjectile.transform.rotation);
+                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x, originalProjectile.transform.position.y + i + i, -6), originalProjectile.transform.rotation);
                 yield return new WaitForSeconds(.35F);
             }
         }
@@ -37,7 +37,7 @@ public class Projectiles : MonoBehaviour
         {
             for (int i = 0; i < NumbOfProjectiles; i++)
             {
-                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x, originalProjectile.transform.position.y - i - i, 0), originalProjectile.transform.rotation);
+                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x, originalProjectile.transform.position.y - i - i, -6), originalProjectile.transform.rotation);
                 yield return new WaitForSeconds(.35F);
             }
         }
@@ -45,7 +45,7 @@ public class Projectiles : MonoBehaviour
         {
             for (int i = 0; i < NumbOfProjectiles; i++)
             {
-                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x + i + i, originalProjectile.transform.position.y, 0), originalProjectile.transform.rotation);
+                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x + i + i, originalProjectile.transform.position.y, -6), originalProjectile.transform.rotation);
                 yield return new WaitForSeconds(.35F);
             }
         }
@@ -55,7 +55,7 @@ public class Projectiles : MonoBehaviour
             {
                 float rand = Random.Range(-5,5);
                 float rand2 = Random.Range(-5,5);
-                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x + rand, originalProjectile.transform.position.y + rand2, 0), originalProjectile.transform.rotation);
+                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x + rand, originalProjectile.transform.position.y + rand2, -6), originalProjectile.transform.rotation);
                 Rigidbody2D rb = projectileClone.GetComponent<Rigidbody2D>();
                 rb.velocity = new Vector3(15,15,0);
                 yield return new WaitForSeconds(.35F);

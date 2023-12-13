@@ -20,7 +20,7 @@ public class Projectile : MonoBehaviour
     {
         if(transform.position.x > boundary)
         {
-            transform.position = new Vector3(startingx,startingy,0);
+            transform.position = new Vector3(startingx,startingy,-6);
         }
         transform.position += transform.right * Time.deltaTime * speed;
     }
