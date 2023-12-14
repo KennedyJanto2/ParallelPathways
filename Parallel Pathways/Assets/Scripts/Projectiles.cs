@@ -62,6 +62,14 @@ public class Projectiles : MonoBehaviour
 
             }
         }
+        else if(typePattern == "Directional")
+        {
+            for(int i = 0; i < NumbOfProjectiles; i++)
+            {
+                GameObject projectileClone = Instantiate(originalProjectile, new Vector3(originalProjectile.transform.position.x, originalProjectile.transform.position.y, -6), originalProjectile.transform.rotation);
+                yield return new WaitForSeconds(.35F);
+            }
+        }
     }
 
   
