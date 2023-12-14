@@ -15,12 +15,13 @@ public class Projectiles : MonoBehaviour
         //GameObject projectileClone = Instantiate(originalProjectile); //create one clone of projectile
         originalProjectile.transform.position = new Vector3(xpos,ypos,-6);
         StartCoroutine(CreateProjectiles(numbOfProjectiles, pattern));
+        Destroy(this.gameObject, 2f);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     IEnumerator CreateProjectiles(int NumbOfProjectiles, string typePattern)
@@ -49,7 +50,7 @@ public class Projectiles : MonoBehaviour
                 yield return new WaitForSeconds(.35F);
             }
         }
-        else if(typePattern == "BouncyRandom") 
+        else if(typePattern == "BouncyRandom")
         {
             for(int i = 0; i < NumbOfProjectiles; i++)
             {
@@ -72,5 +73,5 @@ public class Projectiles : MonoBehaviour
         }
     }
 
-  
+
 }
