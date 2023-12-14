@@ -8,6 +8,8 @@ public class VerticalProjectile : MonoBehaviour
     private float startingy;
     public float yboundary;
     public float speed;
+    public Rigidbody2D rb;
+
     // Start is called before the first frame update
     void Start()
     {
